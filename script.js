@@ -194,6 +194,7 @@ if (galleryScroll) {
 document.querySelectorAll('.stat__num[data-count]').forEach(el => {
   const target = parseInt(el.dataset.count);
   const suffix = el.dataset.suffix || '';
+  const duration = parseInt(el.dataset.duration) || 1800;
   let started = false;
 
   ScrollTrigger.create({
@@ -202,7 +203,6 @@ document.querySelectorAll('.stat__num[data-count]').forEach(el => {
     onEnter: () => {
       if (started) return;
       started = true;
-      const duration = 1800;
       const startTime = performance.now();
 
       function update(now) {
