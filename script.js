@@ -288,6 +288,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===========================
+// FAQ ACCORDION
+// ===========================
+document.querySelectorAll('.faq__q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+    // Close all others
+    document.querySelectorAll('.faq__q').forEach(other => {
+      if (other !== btn) {
+        other.setAttribute('aria-expanded', 'false');
+        other.nextElementSibling.classList.remove('open');
+      }
+    });
+
+    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    answer.classList.toggle('open', !isOpen);
+  });
+});
+
+// ===========================
 // FOOTER YEAR
 // ===========================
 const yearEl = document.querySelector('.footer__bottom p');
