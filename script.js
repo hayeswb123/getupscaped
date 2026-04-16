@@ -168,35 +168,23 @@ if (stepsLine) {
 }
 
 // ===========================
-// GALLERY — horizontal scroll
+// GALLERY — drag scroll
 // ===========================
-const galleryTrack = document.getElementById('galleryTrack');
-const galleryWrap  = document.getElementById('galleryHorizontal');
-
-if (galleryTrack && galleryWrap) {
-  // Wait for layout
-  ScrollTrigger.create({
-    trigger: galleryWrap,
-    start: 'top 60%',
-    once: true,
-    onEnter: () => {
-      const totalScroll = galleryTrack.scrollWidth - galleryWrap.offsetWidth;
-
-      gsap.to(galleryTrack, {
-        x: -totalScroll,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: galleryWrap,
-          start: 'top top',
-          end: () => '+=' + totalScroll,
-          pin: true,
-          scrub: 0.6,
-          invalidateOnRefresh: true,
-        }
-      });
-
-      ScrollTrigger.refresh();
-    }
+const galleryScroll = document.getElementById('galleryScroll');
+if (galleryScroll) {
+  let isDown = false, startX, scrollLeft;
+  galleryScroll.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX - galleryScroll.offsetLeft;
+    scrollLeft = galleryScroll.scrollLeft;
+  });
+  galleryScroll.addEventListener('mouseleave', () => { isDown = false; });
+  galleryScroll.addEventListener('mouseup', () => { isDown = false; });
+  galleryScroll.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - galleryScroll.offsetLeft;
+    galleryScroll.scrollLeft = scrollLeft - (x - startX);
   });
 }
 
@@ -298,3 +286,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ===========================
+// FOOTER YEAR
+// ===========================
+const yearEl = document.querySelector('.footer__bottom p');
+if (yearEl) yearEl.textContent = yearEl.textContent.replace('2024', new Date().getFullYear());

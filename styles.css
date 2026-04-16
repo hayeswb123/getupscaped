@@ -799,30 +799,41 @@ img { max-width: 100%; }
 }
 
 /* ===========================
-   GALLERY — Horizontal Scroll
+   GALLERY — Snap Scroll
    =========================== */
 .gallery-section {
   background: var(--dark);
   padding-top: 140px;
+  padding-bottom: 140px;
 }
 
 .gallery-section .container { margin-bottom: 64px; }
 
-.gallery-horizontal {
-  overflow: hidden;
-  padding-bottom: 100px;
-}
-
-.gallery-horizontal__track {
+.gallery-scroll {
   display: flex;
-  gap: 24px;
+  gap: 28px;
   padding: 0 48px;
-  will-change: transform;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.gallery-scroll:active { cursor: grabbing; }
+.gallery-scroll::-webkit-scrollbar { display: none; }
+
+/* Fade edges */
+.gallery-scroll::before,
+.gallery-scroll::after {
+  content: '';
+  flex-shrink: 0;
+  width: 0;
 }
 
 .gallery-card {
   flex-shrink: 0;
-  width: 420px;
+  width: clamp(280px, 38vw, 460px);
+  scroll-snap-align: start;
 }
 
 .gallery-card__img {
@@ -835,7 +846,13 @@ img { max-width: 100%; }
   justify-content: center;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.4s;
+  transition: border-color 0.4s, transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+
+.gallery-card:hover .gallery-card__img {
+  border-color: rgba(201, 168, 76, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 48px rgba(201,168,76,0.07);
 }
 
 .gallery-card__img::before {
@@ -846,22 +863,44 @@ img { max-width: 100%; }
   pointer-events: none;
 }
 
-.gallery-card__img::after {
-  content: '+';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-display);
-  font-size: 2rem;
-  color: rgba(201, 168, 76, 0.12);
-  transition: color 0.3s;
-}
+.gallery-card__img::after { content: none; }
 
-.gallery-card:hover .gallery-card__img {
-  border-color: rgba(201, 168, 76, 0.35);
+/* Atmospheric night scenes — CSS-only, 4 projects */
+.gallery-card:nth-child(1) .gallery-card__img {
+  background:
+    radial-gradient(ellipse 65% 75% at 28% 104%, rgba(201,168,76,0.48) 0%, rgba(160,110,30,0.22) 38%, transparent 65%),
+    radial-gradient(ellipse 28% 38% at 72% 100%, rgba(201,168,76,0.2) 0%, transparent 52%),
+    radial-gradient(ellipse 90% 18% at 50% 100%, rgba(12,8,2,0.95) 0%, transparent 100%),
+    linear-gradient(180deg, #020408 0%, #040610 35%, #09090a 70%, #050401 100%);
 }
-.gallery-card:hover .gallery-card__img::after {
-  color: rgba(201, 168, 76, 0.35);
+.gallery-card:nth-child(2) .gallery-card__img {
+  background:
+    radial-gradient(circle 14px at 13% 87%, rgba(230,200,100,0.75) 0%, rgba(201,168,76,0.22) 55%, transparent 100%),
+    radial-gradient(circle 11px at 30% 82%, rgba(220,190,90,0.6) 0%, rgba(190,158,65,0.15) 52%, transparent 100%),
+    radial-gradient(circle 9px at 47% 78%, rgba(210,180,78,0.44) 0%, transparent 90%),
+    radial-gradient(circle 7px at 63% 75%, rgba(201,168,76,0.32) 0%, transparent 80%),
+    radial-gradient(circle 5px at 78% 73%, rgba(201,168,76,0.2) 0%, transparent 70%),
+    radial-gradient(ellipse 110% 32% at 50% 104%, rgba(12,8,2,0.98) 0%, transparent 100%),
+    linear-gradient(180deg, #020308 0%, #04060e 38%, #070a08 78%, #040402 100%);
+}
+/* Card 3 — Westlake Modern: soft low-voltage wall wash */
+.gallery-card:nth-child(3) .gallery-card__img {
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 105%, rgba(201,168,76,0.45) 0%, rgba(160,110,30,0.18) 38%, transparent 62%),
+    radial-gradient(ellipse 30% 50% at 20% 100%, rgba(201,168,76,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 50% at 80% 100%, rgba(201,168,76,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 15% at 50% 100%, rgba(10,7,2,0.92) 0%, transparent 100%),
+    linear-gradient(180deg, #030507 0%, #060910 42%, #090a06 74%, #040300 100%);
+}
+/* Card 4 — Tarrytown Classic: moon + garden glow */
+.gallery-card:nth-child(4) .gallery-card__img {
+  background:
+    radial-gradient(circle 55px at 74% 22%, rgba(235,225,205,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 48% 55% at 38% 104%, rgba(201,168,76,0.38) 0%, rgba(160,110,30,0.14) 44%, transparent 68%),
+    radial-gradient(ellipse 26% 28% at 72% 100%, rgba(201,168,76,0.22) 0%, transparent 52%),
+    radial-gradient(ellipse 14% 20% at 90% 90%, rgba(201,168,76,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 14% at 50% 100%, rgba(8,5,2,0.9) 0%, transparent 100%),
+    linear-gradient(180deg, #030407 0%, #04060c 28%, #060904 62%, #040301 100%);
 }
 
 .gallery-card__img-label {
@@ -893,10 +932,16 @@ img { max-width: 100%; }
   text-transform: uppercase;
 }
 
+/* Lift cursor affordance on gallery cards */
+.gallery-card { cursor: default; }
+
 /* ===========================
    TESTIMONIALS
    =========================== */
-.testimonials { background: var(--dark); }
+.testimonials {
+  background: var(--dark);
+  border-top: 1px solid rgba(201,168,76,0.06);
+}
 
 .testimonials__slider {
   position: relative;
@@ -1246,7 +1291,6 @@ img { max-width: 100%; }
   .stat { padding: 40px 36px; }
   .stat__divider { display: none; }
   .contact__inner { grid-template-columns: 1fr; gap: 56px; }
-  .gallery-card { width: 340px; }
 }
 
 @media (max-width: 900px) {
@@ -1261,8 +1305,8 @@ img { max-width: 100%; }
   .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
   .pricing__display { flex-direction: column; gap: 28px; }
   .pricing__bar-wrap { max-width: 220px; }
-  .gallery-card { width: 300px; }
-  .gallery-card__img { height: 220px; }
+  .gallery-card__img { height: 240px; }
+  .gallery-scroll { padding: 0 28px; gap: 20px; }
 }
 
 @media (max-width: 640px) {
@@ -1278,7 +1322,58 @@ img { max-width: 100%; }
   .stat { padding: 28px 20px; width: 50%; }
   .footer__nav { flex-direction: column; gap: 28px; }
   .gallery-section { padding-top: 100px; }
-  .gallery-card { width: 280px; }
   .gallery-card__img { height: 200px; }
+  .gallery-scroll { padding: 0 20px; gap: 16px; }
   .quote-divider { padding: 80px 0; }
+}
+
+/* ===========================
+   TESTIMONIALS — QUOTE DECORATION
+   =========================== */
+.testimonials__slider {
+  position: relative;
+}
+
+.testimonials__slider::before {
+  content: '\201C';
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 14vw, 12rem);
+  color: rgba(201, 168, 76, 0.06);
+  position: absolute;
+  top: -0.35em;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.testimonial-slide { position: relative; z-index: 1; }
+
+/* ===========================
+   GALLERY — IMAGE SCENE LABELS
+   =========================== */
+.gallery-card__img-label {
+  position: absolute;
+  bottom: 16px; left: 16px;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.45);
+  font-weight: 400;
+  z-index: 2;
+}
+
+/* ===========================
+   REDUCED MOTION
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1ms !important;
+  }
+  .marquee-track { animation: none; }
+  .hero__scroll-line { animation: none; }
 }
