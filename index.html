@@ -5,165 +5,335 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getupscaped — Luxury Landscape Lighting</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
 </head>
 <body>
 
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <div class="nav__logo">Getupscaped</div>
+    <div class="nav__logo">
+      <span class="nav__logo-text">Getupscaped</span>
+      <span class="nav__logo-tag">Luxury Lighting</span>
+    </div>
     <ul class="nav__links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#how-it-works">Process</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#pricing">Investment</a></li>
       <li><a href="#contact" class="nav__cta">Free Design</a></li>
     </ul>
-    <button class="nav__burger" id="burger">&#9776;</button>
+    <button class="nav__burger" id="burger" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
   </nav>
 
   <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
     <ul>
       <li><a href="#services" class="mobile-link">Services</a></li>
-      <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+      <li><a href="#how-it-works" class="mobile-link">Process</a></li>
       <li><a href="#gallery" class="mobile-link">Gallery</a></li>
-      <li><a href="#pricing" class="mobile-link">Pricing</a></li>
-      <li><a href="#contact" class="mobile-link">Free Design</a></li>
+      <li><a href="#pricing" class="mobile-link">Investment</a></li>
+      <li><a href="#contact" class="mobile-link mobile-link--cta">Free Design</a></li>
     </ul>
+    <div class="mobile-menu__footer">
+      <p>Austin, Texas</p>
+      <p>getupscaped.com</p>
+    </div>
   </div>
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero__parallax" id="heroParallax"></div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <p class="hero__eyebrow reveal">Luxury Landscape Lighting</p>
-      <h1 class="hero__title reveal">Illuminate<br /><em>your world.</em></h1>
-      <p class="hero__sub reveal">Premium outdoor lighting design — without the premium markup.</p>
-      <a href="#contact" class="btn reveal">Get Your Free Design</a>
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__lines"></div>
+      <div class="hero__glow hero__glow--1"></div>
+      <div class="hero__glow hero__glow--2"></div>
+      <div class="hero__glow hero__glow--3"></div>
     </div>
-    <div class="hero__scroll">
-      <span></span>
+    <div class="hero__content">
+      <div class="hero__meta reveal" style="--d:0.1s">
+        <span>Est. 2016</span>
+        <span class="hero__meta-sep"></span>
+        <span>Austin, Texas</span>
+      </div>
+      <h1 class="hero__title">
+        <span class="hero__word reveal-clip" style="--d:0.2s">Illuminate</span>
+        <span class="hero__word hero__word--italic reveal-clip" style="--d:0.5s">your world.</span>
+      </h1>
+      <div class="hero__bottom reveal" style="--d:0.75s">
+        <p class="hero__sub">Premium outdoor lighting design —<br>without the premium markup.</p>
+        <a href="#contact" class="btn">Get Your Free Design</a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-label="Scroll down">
+      <span class="hero__scroll-label">Scroll</span>
+      <span class="hero__scroll-line"></span>
     </div>
   </section>
 
+  <!-- MARQUEE STRIP -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Uplighting</span><span class="marquee-dot"></span>
+      <span>Pathway Lighting</span><span class="marquee-dot"></span>
+      <span>Driveway &amp; Stone Wall</span><span class="marquee-dot"></span>
+      <span>Strip Lighting</span><span class="marquee-dot"></span>
+      <span>Residential Design</span><span class="marquee-dot"></span>
+      <span>Licensed &amp; Insured</span><span class="marquee-dot"></span>
+      <span>Free Consultation</span><span class="marquee-dot"></span>
+      <span>Austin, Texas</span><span class="marquee-dot"></span>
+      <span>Uplighting</span><span class="marquee-dot"></span>
+      <span>Pathway Lighting</span><span class="marquee-dot"></span>
+      <span>Driveway &amp; Stone Wall</span><span class="marquee-dot"></span>
+      <span>Strip Lighting</span><span class="marquee-dot"></span>
+      <span>Residential Design</span><span class="marquee-dot"></span>
+      <span>Licensed &amp; Insured</span><span class="marquee-dot"></span>
+      <span>Free Consultation</span><span class="marquee-dot"></span>
+      <span>Austin, Texas</span><span class="marquee-dot"></span>
+    </div>
+  </div>
+
   <!-- SERVICES -->
   <section class="services section" id="services">
+    <div class="services__glow" aria-hidden="true"></div>
     <div class="container">
-      <p class="section__eyebrow reveal">What We Do</p>
-      <h2 class="section__title reveal">Crafted for every corner<br />of your property.</h2>
+      <div class="section__header">
+        <p class="section__eyebrow reveal">What We Do</p>
+        <h2 class="section__title reveal-clip">Crafted for every corner<br />of your property.</h2>
+      </div>
       <div class="services__grid">
-        <div class="service-card reveal">
-          <div class="service-card__icon">✦</div>
-          <h3>Uplighting</h3>
-          <p>Dramatic illumination for architectural features and trees, creating depth and presence after dark.</p>
+        <div class="service-card" data-tilt>
+          <span class="service-card__num">01</span>
+          <div class="service-card__body">
+            <h3>Uplighting</h3>
+            <p>Dramatic illumination for architectural features and trees — creating depth, scale, and presence after dark.</p>
+          </div>
+          <div class="service-card__line"></div>
         </div>
-        <div class="service-card reveal">
-          <div class="service-card__icon">✦</div>
-          <h3>Pathway Lighting</h3>
-          <p>Elegant guidance along walkways and garden paths — beautiful and safe.</p>
+        <div class="service-card" data-tilt>
+          <span class="service-card__num">02</span>
+          <div class="service-card__body">
+            <h3>Pathway Lighting</h3>
+            <p>Elegant guidance along walkways and garden paths — at once beautiful and safe.</p>
+          </div>
+          <div class="service-card__line"></div>
         </div>
-        <div class="service-card reveal">
-          <div class="service-card__icon">✦</div>
-          <h3>Driveway & Stone Wall</h3>
-          <p>Define the edges of your property with warm, carefully placed accent lighting.</p>
+        <div class="service-card" data-tilt>
+          <span class="service-card__num">03</span>
+          <div class="service-card__body">
+            <h3>Driveway &amp; Stone Wall</h3>
+            <p>Define the edges of your property with warm, carefully placed accent lighting that commands attention.</p>
+          </div>
+          <div class="service-card__line"></div>
         </div>
-        <div class="service-card reveal">
-          <div class="service-card__icon">✦</div>
-          <h3>Strip Lighting</h3>
-          <p>Subtle architectural accents that add a modern, sophisticated glow to any structure.</p>
+        <div class="service-card" data-tilt>
+          <span class="service-card__num">04</span>
+          <div class="service-card__body">
+            <h3>Strip Lighting</h3>
+            <p>Subtle architectural accents that add a modern, sophisticated glow to any structure or surface.</p>
+          </div>
+          <div class="service-card__line"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PARALLAX DIVIDER 1 -->
-  <div class="parallax-block" id="parallax1">
-    <div class="parallax-block__img" id="parallaxImg1"></div>
-    <div class="parallax-block__overlay"></div>
-    <div class="parallax-block__text reveal">
-      <h2>"Luxury without<br />the luxury markup."</h2>
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat__num" data-count="150" data-suffix="+">0</span>
+      <span class="stat__label">Properties Illuminated</span>
+    </div>
+    <div class="stat__divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat__num">5.0 ★</span>
+      <span class="stat__label">Average Star Rating</span>
+    </div>
+    <div class="stat__divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat__num" data-count="8" data-suffix="">0</span>
+      <span class="stat__label">Years of Excellence</span>
+    </div>
+    <div class="stat__divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat__num">100%</span>
+      <span class="stat__label">Licensed &amp; Insured</span>
+    </div>
+  </div>
+
+  <!-- DIVIDER QUOTE 1 -->
+  <div class="quote-divider">
+    <div class="quote-divider__bg">
+      <div class="quote-divider__glow"></div>
+    </div>
+    <div class="container">
+      <span class="quote-divider__eyebrow reveal">Our Philosophy</span>
+      <h2 class="quote-divider__text reveal-clip">"Luxury without<br /><em>the luxury markup."</em></h2>
     </div>
   </div>
 
   <!-- HOW IT WORKS -->
   <section class="how-it-works section" id="how-it-works">
     <div class="container">
-      <p class="section__eyebrow reveal">Our Process</p>
-      <h2 class="section__title reveal">Five steps to a stunning<br />nighttime landscape.</h2>
+      <div class="section__header">
+        <p class="section__eyebrow reveal">Our Process</p>
+        <h2 class="section__title reveal-clip">Five steps to a stunning<br />nighttime landscape.</h2>
+      </div>
       <div class="steps">
-        <div class="step reveal">
+        <div class="steps__line-wrap" aria-hidden="true">
+          <div class="steps__line" id="stepsLine"></div>
+        </div>
+        <div class="step" data-step>
           <span class="step__num">01</span>
           <div class="step__content">
             <h3>Free Consultation</h3>
-            <p>We visit your property, understand your vision, and assess the space.</p>
+            <p>We visit your property, understand your vision, and assess the space — at no cost to you.</p>
           </div>
         </div>
-        <div class="step reveal">
+        <div class="step" data-step>
           <span class="step__num">02</span>
           <div class="step__content">
             <h3>Custom Design</h3>
-            <p>Our team creates a tailored lighting plan specifically for your property.</p>
+            <p>Our team creates a tailored lighting plan crafted specifically for your property's architecture.</p>
           </div>
         </div>
-        <div class="step reveal">
+        <div class="step" data-step>
           <span class="step__num">03</span>
           <div class="step__content">
             <h3>Professional Installation</h3>
-            <p>Fully licensed and insured installation — clean, precise, and thorough.</p>
+            <p>Fully licensed and insured installation — clean, precise, and thoroughly executed.</p>
           </div>
         </div>
-        <div class="step reveal">
+        <div class="step" data-step>
           <span class="step__num">04</span>
           <div class="step__content">
             <h3>Night Walkthrough</h3>
-            <p>We walk you through the completed installation after dark to ensure perfection.</p>
+            <p>We walk you through the completed installation after dark to ensure every fixture is perfect.</p>
           </div>
         </div>
-        <div class="step reveal">
+        <div class="step" data-step>
           <span class="step__num">05</span>
           <div class="step__content">
             <h3>Champagne Toast</h3>
-            <p>We celebrate your transformed property the right way — with a glass of champagne.</p>
+            <p>We celebrate your transformed property the right way — with a glass of champagne in hand.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section class="gallery section" id="gallery">
+  <!-- GALLERY — Horizontal Scroll -->
+  <section class="gallery-section" id="gallery">
     <div class="container">
-      <p class="section__eyebrow reveal">Our Work</p>
-      <h2 class="section__title reveal">Every project tells<br />a different story.</h2>
+      <div class="section__header">
+        <p class="section__eyebrow reveal">Our Work</p>
+        <h2 class="section__title reveal-clip">Every project tells<br />a different story.</h2>
+      </div>
     </div>
-    <div class="gallery__grid">
-      <div class="gallery__item reveal" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80')"></div>
-      <div class="gallery__item reveal" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80')"></div>
-      <div class="gallery__item reveal" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80')"></div>
-      <div class="gallery__item reveal" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80')"></div>
-      <div class="gallery__item reveal" style="background-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&q=80')"></div>
-      <div class="gallery__item reveal" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80')"></div>
+    <div class="gallery-horizontal" id="galleryHorizontal">
+      <div class="gallery-horizontal__track" id="galleryTrack">
+        <div class="gallery-card">
+          <div class="gallery-card__img">
+            <span class="gallery-card__img-label">Project 01</span>
+          </div>
+          <div class="gallery-card__info">
+            <h3>Lakeway Residence</h3>
+            <span>Full Property</span>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card__img">
+            <span class="gallery-card__img-label">Project 02</span>
+          </div>
+          <div class="gallery-card__info">
+            <h3>Barton Creek Estate</h3>
+            <span>Uplighting &amp; Pathway</span>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card__img">
+            <span class="gallery-card__img-label">Project 03</span>
+          </div>
+          <div class="gallery-card__info">
+            <h3>Westlake Modern</h3>
+            <span>Strip &amp; Accent</span>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card__img">
+            <span class="gallery-card__img-label">Project 04</span>
+          </div>
+          <div class="gallery-card__info">
+            <h3>Tarrytown Classic</h3>
+            <span>Driveway &amp; Garden</span>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card__img">
+            <span class="gallery-card__img-label">Project 05</span>
+          </div>
+          <div class="gallery-card__info">
+            <h3>Rob Roy Hillside</h3>
+            <span>Full Property</span>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card__img">
+            <span class="gallery-card__img-label">Project 06</span>
+          </div>
+          <div class="gallery-card__info">
+            <h3>Circle C Ranch</h3>
+            <span>Landscape &amp; Pathway</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- PARALLAX DIVIDER 2 -->
-  <div class="parallax-block" id="parallax2">
-    <div class="parallax-block__img" id="parallaxImg2"></div>
-    <div class="parallax-block__overlay"></div>
-    <div class="parallax-block__text reveal">
-      <h2>Transforming properties<br />one light at a time.</h2>
+  <!-- DIVIDER QUOTE 2 -->
+  <div class="quote-divider">
+    <div class="quote-divider__bg">
+      <div class="quote-divider__glow quote-divider__glow--alt"></div>
+    </div>
+    <div class="container">
+      <span class="quote-divider__eyebrow reveal">The Standard</span>
+      <h2 class="quote-divider__text reveal-clip">Transforming properties<br /><em>one light at a time.</em></h2>
     </div>
   </div>
 
-  <!-- TESTIMONIAL -->
-  <section class="testimonial section">
+  <!-- TESTIMONIALS -->
+  <section class="testimonials section">
     <div class="container">
-      <div class="testimonial__card reveal">
-        <div class="testimonial__stars">★★★★★</div>
-        <blockquote>"The design quality and professionalism were beyond anything we expected. Our home looks like it belongs in a magazine — and the champagne toast at the end was the perfect touch."</blockquote>
-        <cite>— Happy Homeowner</cite>
+      <p class="section__eyebrow reveal" style="text-align:center">Client Experiences</p>
+      <div class="testimonials__slider" id="testimonialsSlider">
+        <div class="testimonial-slide active">
+          <div class="testimonial__stars">★★★★★</div>
+          <blockquote>"The design quality and professionalism were beyond anything we expected. Our home looks like it belongs in a magazine — and the champagne toast at the end was the perfect touch."</blockquote>
+          <cite>— Sarah &amp; Michael T., Westlake Hills</cite>
+        </div>
+        <div class="testimonial-slide">
+          <div class="testimonial__stars">★★★★★</div>
+          <blockquote>"From the initial consultation to the final walkthrough, every detail was handled with precision and care. Our driveway and gardens have been completely transformed."</blockquote>
+          <cite>— James R., Barton Creek</cite>
+        </div>
+        <div class="testimonial-slide">
+          <div class="testimonial__stars">★★★★★</div>
+          <blockquote>"We've had other lighting companies quote us far more for far less. Getupscaped delivered a world-class result at a price that genuinely surprised us."</blockquote>
+          <cite>— The Henderson Family, Tarrytown</cite>
+        </div>
+      </div>
+      <div class="testimonials__dots" id="testimonialDots">
+        <button class="dot active" data-index="0" aria-label="Testimonial 1"></button>
+        <button class="dot" data-index="1" aria-label="Testimonial 2"></button>
+        <button class="dot" data-index="2" aria-label="Testimonial 3"></button>
       </div>
     </div>
   </section>
@@ -171,32 +341,77 @@
   <!-- PRICING -->
   <section class="pricing section" id="pricing">
     <div class="container">
-      <p class="section__eyebrow reveal">Investment</p>
-      <h2 class="section__title reveal">Transparent pricing.<br />No surprises.</h2>
-      <div class="pricing__range reveal">
-        <span class="pricing__low">$2,500</span>
-        <div class="pricing__bar"><div class="pricing__fill"></div></div>
-        <span class="pricing__high">$12,000</span>
+      <div class="section__header" style="text-align:center">
+        <p class="section__eyebrow reveal">Investment</p>
+        <h2 class="section__title reveal-clip">Transparent pricing.<br />No surprises.</h2>
       </div>
-      <p class="pricing__note reveal">Most projects fall between $2,500 and $12,000 depending on scope, property size, and fixture selection. Every quote is custom — and always free.</p>
-      <a href="#contact" class="btn reveal">Get a Free Quote</a>
+      <div class="pricing__display reveal">
+        <div class="pricing__amount">
+          <span class="pricing__amount-label">Starting at</span>
+          <span class="pricing__amount-value">$2,500</span>
+        </div>
+        <div class="pricing__bar-wrap">
+          <div class="pricing__bar"><div class="pricing__fill" id="pricingFill"></div></div>
+          <div class="pricing__bar-label">Most projects fall within this range</div>
+        </div>
+        <div class="pricing__amount">
+          <span class="pricing__amount-label">Up to</span>
+          <span class="pricing__amount-value">$12,000</span>
+        </div>
+      </div>
+      <p class="pricing__note reveal">Every installation is custom-designed for your property. Pricing depends on scope, square footage, and fixture selection. Your quote is always free — and always honest.</p>
+      <div class="pricing__cta reveal">
+        <a href="#contact" class="btn">Request a Free Quote</a>
+        <p class="pricing__cta-note">No obligation. No sales pressure.</p>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section class="contact section" id="contact">
+    <div class="contact__glow" aria-hidden="true"></div>
     <div class="container">
-      <p class="section__eyebrow reveal">Get Started</p>
-      <h2 class="section__title reveal">Ready to transform<br />your property?</h2>
-      <form class="contact__form reveal" id="contactForm">
-        <div class="form__row">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Email Address" required />
+      <div class="contact__inner">
+        <div class="contact__left">
+          <p class="section__eyebrow reveal">Get Started</p>
+          <h2 class="section__title reveal-clip">Ready to transform<br />your property?</h2>
+          <div class="contact__info reveal">
+            <div class="contact__info-item">
+              <span class="contact__info-label">Location</span>
+              <span>Austin, Texas &amp; Surrounding Areas</span>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-label">Response Time</span>
+              <span>Within 24 hours</span>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-label">Consultation</span>
+              <span>Always free, always on-site</span>
+            </div>
+          </div>
         </div>
-        <input type="tel" placeholder="Phone Number" />
-        <textarea placeholder="Tell us about your property and vision..." rows="5"></textarea>
-        <button type="submit" class="btn">Request Free Design Consultation</button>
-      </form>
+        <form class="contact__form reveal" id="contactForm">
+          <div class="form__row">
+            <div class="form__field">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="First &amp; Last Name" required />
+            </div>
+            <div class="form__field">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="form__field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(512) 000-0000" />
+          </div>
+          <div class="form__field">
+            <label for="message">Your Vision</label>
+            <textarea id="message" placeholder="Tell us about your property and what you're hoping to achieve..." rows="5"></textarea>
+          </div>
+          <button type="submit" class="btn btn--full">Request Free Design Consultation</button>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -206,23 +421,31 @@
       <div class="footer__top">
         <div class="footer__brand">
           <h3>Getupscaped</h3>
-          <p>Luxury landscape lighting without the luxury markup.</p>
+          <p>Luxury landscape lighting without<br />the luxury markup.</p>
         </div>
-        <div class="footer__links">
-          <a href="#services">Services</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
+        <div class="footer__nav">
+          <div class="footer__nav-col">
+            <p class="footer__nav-head">Navigate</p>
+            <a href="#services">Services</a>
+            <a href="#how-it-works">Process</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#pricing">Investment</a>
+          </div>
+          <div class="footer__nav-col">
+            <p class="footer__nav-head">Contact</p>
+            <a href="#contact">Free Consultation</a>
+            <a href="https://getupscaped.com" target="_blank" rel="noopener">getupscaped.com</a>
+            <span>Austin, Texas</span>
+          </div>
         </div>
       </div>
       <div class="footer__bottom">
         <p>&copy; 2024 Getupscaped. All rights reserved.</p>
-        <a href="https://getupscaped.com" target="_blank">getupscaped.com</a>
+        <p>Luxury Landscape Lighting — Austin, TX</p>
       </div>
     </div>
   </footer>
 
-  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
