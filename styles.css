@@ -157,23 +157,24 @@ img { max-width: 100%; }
   border-bottom-color: rgba(201, 168, 76, 0.08);
 }
 
-.nav__logo { display: flex; flex-direction: column; gap: 2px; }
+.nav__logo { display: flex; align-items: baseline; gap: 10px; }
 
 .nav__logo-text {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--gold);
   line-height: 1;
 }
 
 .nav__logo-tag {
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
+  font-size: 0.55rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(201, 168, 76, 0.45);
+  color: rgba(201, 168, 76, 0.5);
   font-weight: 400;
+  padding-bottom: 2px;
 }
 
 .nav__links {
